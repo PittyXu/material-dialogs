@@ -300,6 +300,14 @@ public class MaterialDialog extends DialogBase implements
         }
     }
 
+    protected final Drawable getTitleFrameBackground() {
+        if (mBuilder.titleFrameBackground != 0)
+            return ResourcesCompat.getDrawable(mBuilder.context.getResources(), mBuilder.titleFrameBackground, null);
+        final Drawable d = DialogUtils.resolveDrawable(mBuilder.context, R.attr.md_title_frame_background);
+        if (d != null) return d;
+        return DialogUtils.resolveDrawable(getContext(), R.attr.md_title_frame_background);
+    }
+
     private boolean sendSingleChoiceCallback(View v) {
         if (mBuilder.listCallbackSingleChoice == null) return false;
         CharSequence text = null;
@@ -462,6 +470,9 @@ public class MaterialDialog extends DialogBase implements
         @DrawableRes
         protected int btnSelectorNegative;
 
+        @DrawableRes
+        protected int titleFrameBackground;
+
         public final Context getContext() {
             return context;
         }
@@ -567,6 +578,8 @@ public class MaterialDialog extends DialogBase implements
                 this.btnSelectorNeutral = s.btnSelectorNeutral;
             if (s.btnSelectorNegative != 0)
                 this.btnSelectorNegative = s.btnSelectorNegative;
+            if (s.titleFrameBackground != 0)
+                this.titleFrameBackground = s.titleFrameBackground;
             if (s.widgetColor != 0)
                 this.widgetColor = s.widgetColor;
             if (s.linkColor != null)
@@ -1001,6 +1014,11 @@ public class MaterialDialog extends DialogBase implements
          */
         public Builder btnStackedGravity(@NonNull GravityEnum gravity) {
             this.btnStackedGravity = gravity;
+            return this;
+        }
+
+        public Builder titleFrameBackground(@DrawableRes int selectorRes) {
+            this.titleFrameBackground = selectorRes;
             return this;
         }
 

@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements
                 .content(R.string.useGoogleLocationServicesPrompt)
                 .positiveText(R.string.agree)
                 .negativeText(R.string.disagree)
+                .titleFrameBackground(android.R.color.holo_red_dark)
                 .show();
     }
 

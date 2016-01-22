@@ -193,6 +193,10 @@ class DialogInit {
                 dialog.title.setText(builder.title);
                 dialog.titleFrame.setVisibility(View.VISIBLE);
             }
+
+            if (builder.titleFrameBackground > 0) {
+                DialogUtils.setBackgroundCompat(dialog.titleFrame, dialog.getTitleFrameBackground());
+            }
         }
 
         // Setup content
