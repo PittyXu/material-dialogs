@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements
                 .positiveText(R.string.agree)
                 .negativeText(R.string.disagree)
                 .titleFrameBackground(android.R.color.holo_red_dark)
+                .dialogFrameBackground(android.R.color.holo_blue_dark)
                 .show();
     }
 
@@ -210,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements
                         showToast(which + ": " + text);
                     }
                 })
+                .dialogFrameBackground(android.R.color.holo_green_dark)
                 .show();
     }
 

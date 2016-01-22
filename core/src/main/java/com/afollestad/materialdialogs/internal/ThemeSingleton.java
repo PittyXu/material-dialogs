@@ -60,6 +60,8 @@ public class ThemeSingleton {
 
     @DrawableRes
     public int titleFrameBackground = 0;
+    @DrawableRes
+    public int dialogBackground = 0;
 
     public GravityEnum titleGravity = GravityEnum.START;
     public GravityEnum contentGravity = GravityEnum.START;

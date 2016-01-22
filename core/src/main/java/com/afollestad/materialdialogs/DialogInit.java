@@ -75,13 +75,21 @@ class DialogInit {
         // Set cancelable flag and dialog background color
         dialog.setCancelable(builder.cancelable);
         dialog.setCanceledOnTouchOutside(builder.cancelable);
-        if (builder.backgroundColor == 0)
-            builder.backgroundColor = DialogUtils.resolveColor(builder.context, R.attr.md_background_color);
-        if (builder.backgroundColor != 0) {
-            GradientDrawable drawable = new GradientDrawable();
-            drawable.setCornerRadius(builder.context.getResources().getDimension(R.dimen.md_bg_corner_radius));
-            drawable.setColor(builder.backgroundColor);
-            DialogUtils.setBackgroundCompat(dialog.view, drawable);
+
+        if (builder.dialogBackground > 0) {
+            DialogUtils.setBackgroundCompat(dialog.view, dialog.getDialogBackground());
+        } else {
+            if (builder.backgroundColor == 0)
+                builder.backgroundColor = DialogUtils
+                                                  .resolveColor(builder.context, R.attr.md_background_color);
+
+            if (builder.backgroundColor != 0) {
+                GradientDrawable drawable = new GradientDrawable();
+                drawable.setCornerRadius(builder.context.getResources()
+                                                 .getDimension(R.dimen.md_bg_corner_radius));
+                drawable.setColor(builder.backgroundColor);
+                DialogUtils.setBackgroundCompat(dialog.view, drawable);
+            }
         }
 
         // Retrieve color theme attributes

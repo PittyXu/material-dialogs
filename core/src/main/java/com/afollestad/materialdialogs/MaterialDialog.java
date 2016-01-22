@@ -308,6 +308,14 @@ public class MaterialDialog extends DialogBase implements
         return DialogUtils.resolveDrawable(getContext(), R.attr.md_title_frame_background);
     }
 
+    protected final Drawable getDialogBackground() {
+        if (mBuilder.dialogBackground != 0)
+            return ResourcesCompat.getDrawable(mBuilder.context.getResources(), mBuilder.dialogBackground, null);
+        final Drawable d = DialogUtils.resolveDrawable(mBuilder.context, R.attr.md_dialog_background);
+        if (d != null) return d;
+        return DialogUtils.resolveDrawable(getContext(), R.attr.md_dialog_background);
+    }
+
     private boolean sendSingleChoiceCallback(View v) {
         if (mBuilder.listCallbackSingleChoice == null) return false;
         CharSequence text = null;
@@ -472,6 +480,8 @@ public class MaterialDialog extends DialogBase implements
 
         @DrawableRes
         protected int titleFrameBackground;
+        @DrawableRes
+        protected int dialogBackground;
 
         public final Context getContext() {
             return context;
@@ -580,6 +590,8 @@ public class MaterialDialog extends DialogBase implements
                 this.btnSelectorNegative = s.btnSelectorNegative;
             if (s.titleFrameBackground != 0)
                 this.titleFrameBackground = s.titleFrameBackground;
+            if (s.dialogBackground != 0)
+                this.dialogBackground = s.dialogBackground;
             if (s.widgetColor != 0)
                 this.widgetColor = s.widgetColor;
             if (s.linkColor != null)
@@ -1019,6 +1031,11 @@ public class MaterialDialog extends DialogBase implements
 
         public Builder titleFrameBackground(@DrawableRes int selectorRes) {
             this.titleFrameBackground = selectorRes;
+            return this;
+        }
+
+        public Builder dialogFrameBackground(@DrawableRes int selectorRes) {
+            this.dialogBackground = selectorRes;
             return this;
         }
 
